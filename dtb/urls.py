@@ -25,4 +25,5 @@ urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     path('', views.index, name="index"),
     path('super_secter_webhook/', csrf_exempt(views.TelegramBotWebhookView.as_view())),
+    path('upload/', views.upload_file, name='upload_file'),
 ]
