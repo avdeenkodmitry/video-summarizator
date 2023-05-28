@@ -17,6 +17,7 @@ import debug_toolbar
 from django.contrib import admin
 from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
+import stt
 
 from . import views
 
@@ -25,5 +26,5 @@ urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     path('', views.index, name="index"),
     path('super_secter_webhook/', csrf_exempt(views.TelegramBotWebhookView.as_view())),
-    path('upload/', views.upload_file, name='upload_file'),
+    path('upload/', include("stt.urls"), name='upload_file'),
 ]

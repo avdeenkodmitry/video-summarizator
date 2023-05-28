@@ -5,10 +5,10 @@ python-dotenv
 ipython==8.5.0  # enhanced python interpreter
 
 # Django
-django==4.1.0
-django-cors-headers==3.13.0
-django-debug-toolbar==3.6.0
-whitenoise==6.2.0  # for serving static files
+django
+django-cors-headers
+django-debug-toolbar
+whitenoise  # for serving static files
 
 # Django 3.0 async requirements
 gunicorn==20.1.0
@@ -26,5 +26,7 @@ django-celery-beat==2.3.0
 # Telegram
 python-telegram-bot==13.15  # last sync version
 
+
+git+https://github.com/linto-ai/whisper-timestamped
 # monitoring
 # sentry-sdk

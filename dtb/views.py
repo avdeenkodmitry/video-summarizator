@@ -40,26 +40,3 @@ class TelegramBotWebhookView(View):
 
     def get(self, request, *args, **kwargs):  # for debug
         return JsonResponse({"ok": "Get request received! But nothing done"})
-
-
-@app.task(ignore_result=True)
-def send_video_to_nn(file_name, **params):
-    update = Update.de_json(update_json, bot)
-
-    dispatcher.process_update(update)
-    return None
-
-def upload_file(request):
-    #
-    if request.method == 'POST':
-        file = request.FILES['file']
-        # save file locally to media folder
-        with open(f'media/{file.name}_{}', 'wb+') as destination:
-            for chunk in file.chunks():
-                destination.write(chunk)
-
-        send_video_to_nn.delay(file.name)
-
-        return render(request, 'upload_success.html', {'filename': file.name})
-
-    return render(request, 'upload_file.html')
